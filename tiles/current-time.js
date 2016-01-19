@@ -2,17 +2,19 @@ var every = require('glances-app/utils/every')
 
 var currentTime = function () {
   var date = new Date()
+  var hours = date.getHours()
   var minutes = date.getMinutes()
+  var seconds = date.getSeconds()
 
   return [
-    date.getHours(),
+    hours < 10 ? '0' + hours : hours,
     minutes < 10 ? '0' + minutes : minutes,
-    date.getSeconds()
+    seconds < 10 ? '0' + seconds : seconds,
   ].join(':')
 }
 
 var tile = {
-  title: 'Time',
+  title: 'Server Time',
   value: currentTime()
 }
 
